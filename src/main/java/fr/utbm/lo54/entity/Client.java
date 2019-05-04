@@ -6,24 +6,50 @@
 package fr.utbm.lo54.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 
 /**
  *
  * @author dbissari
  */
+@Entity
 public class Client implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @Column(nullable = false)
     private String firstName;
     
+    @Column(nullable = false)
     private String lastName;
     
+    @Column(nullable = false)
     private String address;
     
+    @Column(nullable = false, unique = true)
     private String phone;
     
+    @Column(nullable = false, unique = true)
     private String email;
+    
+    @ManyToMany(mappedBy = "attendees")
+    private List<CourseSession> courseSessions;
+    
+    public Client() {
+        this.courseSessions = new ArrayList<>();
+    }
+
+    public Client(String firstName, String lastName, String address, String phone, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
@@ -72,5 +98,9 @@ public class Client implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     } 
+
+    public List<CourseSession> getCourseSessions() {
+        return courseSessions;
+    }
     
 }

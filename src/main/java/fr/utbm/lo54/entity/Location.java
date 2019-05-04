@@ -6,6 +6,7 @@
 package fr.utbm.lo54.entity;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
@@ -13,9 +14,20 @@ import java.io.Serializable;
  */
 public class Location implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @Column(nullable = false, unique = true)
     private String city;
+    
+    public Location() {
+        
+    }
+
+    public Location(String city) {
+        this.city = city;
+    }
 
     public Integer getId() {
         return id;

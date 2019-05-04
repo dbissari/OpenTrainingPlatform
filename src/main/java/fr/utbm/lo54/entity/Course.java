@@ -6,6 +6,7 @@
 package fr.utbm.lo54.entity;
 
 import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  *
@@ -13,9 +14,21 @@ import java.io.Serializable;
  */
 public class Course implements Serializable {
     
+    @Id
+    @Column(nullable = false, unique = true)
     private String code;
     
+    @Column(nullable = false, unique = true)
     private String title;
+    
+    public Course() {
+        
+    }
+
+    public Course(String code, String title) {
+        this.code = code;
+        this.title = title;
+    }
 
     public String getCode() {
         return code;
