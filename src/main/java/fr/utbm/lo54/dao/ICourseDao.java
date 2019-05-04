@@ -6,6 +6,7 @@
 package fr.utbm.lo54.dao;
 
 import fr.utbm.lo54.entity.Course;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,4 +24,10 @@ public interface ICourseDao {
     public Course findByCode(String code);
 
     public void delete(String code);
+    
+    public List<Course> filter(String text);
+    
+    public List<Course> filterBySessionDate(Date date);
+    
+    public List<Course> filterByLocation(Integer locationId);
 }
