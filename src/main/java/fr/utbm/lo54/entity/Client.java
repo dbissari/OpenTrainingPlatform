@@ -6,9 +6,11 @@
 package fr.utbm.lo54.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
@@ -36,11 +38,8 @@ public class Client implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
     
-    @ManyToMany(mappedBy = "attendees")
-    private List<CourseSession> courseSessions;
-    
     public Client() {
-        this.courseSessions = new ArrayList<>();
+        
     }
 
     public Client(String firstName, String lastName, String address, String phone, String email) {
@@ -97,10 +96,6 @@ public class Client implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    } 
-
-    public List<CourseSession> getCourseSessions() {
-        return courseSessions;
     }
     
 }

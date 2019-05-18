@@ -9,12 +9,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author dbissari
  */
+@Entity
 public class CourseSession implements Serializable {
     
     @Id
@@ -110,12 +120,10 @@ public class CourseSession implements Serializable {
 
     public void addAttendee(Client attendee) {
         attendees.add(attendee);
-        attendee.getCourseSessions().add(this);
     }
 
     public void removeAttendee(Client attendee) {
         attendees.remove(attendee);
-        attendee.getCourseSessions().remove(this);
     }
     
 }

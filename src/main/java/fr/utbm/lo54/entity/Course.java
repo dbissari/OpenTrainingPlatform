@@ -6,12 +6,15 @@
 package fr.utbm.lo54.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author dbissari
  */
+@Entity
 public class Course implements Serializable {
     
     @Id

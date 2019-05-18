@@ -5,36 +5,40 @@
  */
 package fr.utbm.lo54.service;
 
-import fr.utbm.lo54.dao.ClientDao;
 import fr.utbm.lo54.dao.IClientDao;
 import fr.utbm.lo54.entity.Client;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author edemos
  */
-public class ClientService {
+@Service
+public class ClientService implements IClientService {
     
-    private IClientDao clientDao = new ClientDao();
+    @Autowired
+    private IClientDao clientDao;
     
-    public void createClient(Client client) {
+    @Override
+    public void create(Client client) {
         clientDao.persist(client);
     }
     
-    public void updateClient(Client client) {
+    @Override
+    public void update(Client client) {
         clientDao.update(client);
     }
     
-    public List<Client> listClients() {
+    @Override
+    public List<Client> listAll() {
         return clientDao.findAll();
     }
     
-    public Client detailsClient(Integer id) {
+    @Override
+    public Client getById(Integer id) {
         return clientDao.findById(id);
     }
     
-    public void deleteClient(Integer id) {
-        clientDao.delete(id);
-    }
 }

@@ -22,5 +22,5 @@ public interface ILocationDao {
 
     public Location findById(Integer id);
 
-    public void delete(Integer id);
+    //public void delete(Integer id);
 }

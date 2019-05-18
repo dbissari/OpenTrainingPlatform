@@ -21,6 +21,4 @@ public interface IClientDao {
     public List<Client> findAll();
 
     public Client findById(Integer id);
-
-    public void delete(Integer id);
 }

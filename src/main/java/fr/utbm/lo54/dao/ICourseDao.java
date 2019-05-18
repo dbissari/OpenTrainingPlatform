@@ -22,7 +22,7 @@ public interface ICourseDao {
     public List<Course> findAll();
 
     public Course findByCode(String code);
-
+/*
     public void delete(String code);
     
     public List<Course> filter(String text);
@@ -30,4 +30,5 @@ public interface ICourseDao {
     public List<Course> filterBySessionDate(Date date);
     
     public List<Course> filterByLocation(Integer locationId);
+*/
 }
