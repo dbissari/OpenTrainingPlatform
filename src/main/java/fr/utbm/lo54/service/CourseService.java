@@ -5,33 +5,39 @@
  */
 package fr.utbm.lo54.service;
 
+import fr.utbm.lo54.dao.ICourseDao;
 import fr.utbm.lo54.entity.Course;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author edemos
  */
-public class CourseService {
-    public void createCourse(Course course) {
-        // TODO: call persist() from dao
-    }
+@Service
+public class CourseService implements ICourseService {
+
+    @Autowired
+    protected ICourseDao courseDao;
     
-    public void updateCourse(Course course) {
-        // TODO: call update() from dao
+    @Override
+    public void create(Course course) {
+        courseDao.persist(course);
     }
-    
-    public List<Course> listCourses() {
-        // TODO: call findAll() from dao
-        return null;
+
+    @Override
+    public void update(Course course) {
+        courseDao.update(course);
     }
-    
-    public Course detailsCourse(String code) {
-        // TODO: call findByCode() from dao
-        return null;
+
+    @Override
+    public List<Course> listAll() {
+        return courseDao.findAll();
     }
-    
-    public void deleteCourse(String code) {
-        // TODO: call delete() from dao
+
+    @Override
+    public Course getByCode(String code) {
+        return courseDao.findByCode(code);
     }
 }

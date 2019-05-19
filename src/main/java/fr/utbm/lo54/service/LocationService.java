@@ -5,33 +5,39 @@
  */
 package fr.utbm.lo54.service;
 
+import fr.utbm.lo54.dao.ILocationDao;
 import fr.utbm.lo54.entity.Location;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author edemos
  */
-public class LocationService {
-    public void createLocation(Location location) {
-        // TODO: call persist() from dao
-    }
+@Service
+public class LocationService implements ILocationService {
     
-    public void updateLocation(Location location) {
-        // TODO: call update() from dao
+    @Autowired
+    private ILocationDao locationDao;
+
+    @Override
+    public void create(Location location) {
+        locationDao.persist(location);
     }
-    
-    public List<Location> listLocations() {
-        // TODO: call findAll() from dao
-        return null;
+
+    @Override
+    public void update(Location location) {
+        locationDao.update(location);
     }
-    
-    public Location detailsLocation(Integer id) {
-        // TODO: call findById() from dao
-        return null;
+
+    @Override
+    public List<Location> listAll() {
+        return locationDao.findAll();
     }
-    
-    public void deleteLocation(Integer id) {
-        // TODO: call delete() from dao
+
+    @Override
+    public Location getById(Integer id) {
+        return locationDao.findById(id);
     }
 }

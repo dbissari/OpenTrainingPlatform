@@ -73,8 +73,8 @@
                     </a>
                     <div id="collapseCourses" class="collapse" aria-labelledby="headingCourses" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="#">New</a>
-                            <a class="collapse-item" href="#">List</a>
+                            <a class="collapse-item" href="<c:url value='/course/new' />">New</a>
+                            <a class="collapse-item" href="<c:url value='/course' />">List</a>
                         </div>
                     </div>
                 </li>
@@ -87,8 +87,8 @@
                     </a>
                     <div id="collapseLocations" class="collapse" aria-labelledby="headingLocations" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="#">New</a>
-                            <a class="collapse-item" href="#">List</a>
+                            <a class="collapse-item" href="<c:url value='/location/new' />">New</a>
+                            <a class="collapse-item" href="<c:url value='/location' />">List</a>
                         </div>
                     </div>
                 </li>
