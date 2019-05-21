@@ -29,12 +29,14 @@ public class CourseController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(ModelMap model) {
         model.addAttribute("courses", courseService.listAll());
+        
         return "course/index";
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String showNewForm(ModelMap model) {
         model.addAttribute("course", new Course());
+        
         return "course/form";
     }
     
@@ -56,6 +58,7 @@ public class CourseController {
     @RequestMapping(value = "/{code}/edit", method = RequestMethod.POST)
     public String submitEditForm(@PathVariable("code") String code, @ModelAttribute("course") Course course) {
         courseService.update(course);
+        
         return "redirect:/course";
     }
 }

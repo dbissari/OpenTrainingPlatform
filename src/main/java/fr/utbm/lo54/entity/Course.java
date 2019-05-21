@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Course implements Serializable {
     
     @Id
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String code;
     
     @Column(nullable = false, unique = true)

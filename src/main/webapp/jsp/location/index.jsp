@@ -28,6 +28,7 @@
                         <thead>
                             <tr>
                                 <th>City</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>

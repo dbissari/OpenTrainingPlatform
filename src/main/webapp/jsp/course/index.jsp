@@ -29,6 +29,7 @@
                             <tr>
                                 <th>Code</th>
                                 <th>Title</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
