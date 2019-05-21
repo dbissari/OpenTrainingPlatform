@@ -18,11 +18,15 @@ public interface ICourseSessionDao {
 
     public void update(CourseSession courseSession);
 
+    public CourseSession findById(Integer id);
+
     public List<CourseSession> findAll();
 
+    /*
     public List<CourseSession> findAllFuture();
 
     public CourseSession findById(Integer id);
 
     public void delete(Integer id);
+    */
 }

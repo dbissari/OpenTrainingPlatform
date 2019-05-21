@@ -101,8 +101,8 @@
                     </a>
                     <div id="collapseSessions" class="collapse" aria-labelledby="headingSessions" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="#">New</a>
-                            <a class="collapse-item" href="#">List</a>
+                            <a class="collapse-item" href="<c:url value='/course-session/new' />">New</a>
+                            <a class="collapse-item" href="<c:url value='/course-session' />">List</a>
                             <a class="collapse-item" href="#">Search</a>
                         </div>
                     </div>

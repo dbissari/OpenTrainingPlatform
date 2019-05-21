@@ -5,38 +5,39 @@
  */
 package fr.utbm.lo54.service;
 
+import fr.utbm.lo54.dao.ICourseSessionDao;
 import fr.utbm.lo54.entity.CourseSession;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author edemos
  */
-public class CourseSessionService {
-    public void createCourseSession(CourseSession courseSession) {
-        // TODO: call persist() from dao
-    }
+@Service
+public class CourseSessionService implements ICourseSessionService{
     
-    public void updateCourseSession(CourseSession courseSession) {
-        // TODO: call update() from dao
+    @Autowired
+    private ICourseSessionDao courseSessionDao;
+
+    @Override
+    public void create(CourseSession courseSession) {
+        courseSessionDao.persist(courseSession);
     }
-    
-    public List<CourseSession> listCourseSessions() {
-        // TODO: call findAll() from dao
-        return null;
+
+    @Override
+    public void update(CourseSession courseSession) {
+        courseSessionDao.update(courseSession);
     }
-    
-    public List<CourseSession> listFutureCourseSessions() {
-        // TODO: call findAllFuture() from dao
-        return null;
+
+    @Override
+    public List<CourseSession> listAll() {
+        return courseSessionDao.findAll();
     }
-    
-    public CourseSession detailsCourseSession(Integer id) {
-        // TODO: call findById() from dao
-        return null;
-    }
-    
-    public void deleteCourseSession(Integer id) {
-        // TODO: call delete() from dao
+
+    @Override
+    public CourseSession getById(Integer id) {
+        return courseSessionDao.findById(id);
     }
 }
