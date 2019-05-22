@@ -36,12 +36,14 @@ public class CourseDao implements ICourseDao {
     }
 
     @Override
+    @Transactional
     public List<Course> findAll() {
         Query query = entityManager.createQuery("SELECT c FROM Course c", Course.class);
         return query.getResultList();
     }
 
     @Override
+    @Transactional
     public Course findByCode(String code) {
         return entityManager.find(Course.class, code);
     }

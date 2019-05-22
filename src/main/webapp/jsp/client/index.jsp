@@ -44,7 +44,7 @@
                                 <td>${client.phone}</td>
                                 <td>${client.email}</td>
                                 <td>
-                                    <a href="<c:url value='client/${client.id}/edit' />" class="btn btn-sm btn-primary">
+                                    <a href="<c:url value='/client/${client.id}/edit' />" class="btn btn-sm btn-primary">
                                         <i class="fas fa-pen fa-sm text-white-50"></i> Edit
                                     </a>
                                     <!--<a href="#" class="btn btn-sm btn-danger">

@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -51,6 +52,11 @@ public class CourseSession implements Serializable {
     private Location location;
     
     @ManyToMany
+    @JoinTable(
+            name = "Register",
+            joinColumns=@JoinColumn(name="session_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="attendee_id", referencedColumnName="id")
+    )
     private List<Client> attendees;
     
     public CourseSession() {

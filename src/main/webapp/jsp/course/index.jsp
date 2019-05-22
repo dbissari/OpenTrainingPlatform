@@ -38,7 +38,7 @@
                                 <td>${course.code}</td>
                                 <td>${course.title}</td>
                                 <td>
-                                    <a href="<c:url value="course/${course.code}/edit" />" class="btn btn-sm btn-primary">
+                                    <a href="<c:url value="/course/${course.code}/edit" />" class="btn btn-sm btn-primary">
                                         <i class="fas fa-pen fa-sm text-white-50"></i> Edit
                                     </a>
                                     <!--<a href="#" class="btn btn-sm btn-danger">

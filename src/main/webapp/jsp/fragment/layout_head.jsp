@@ -103,7 +103,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="<c:url value='/course-session/new' />">New</a>
                             <a class="collapse-item" href="<c:url value='/course-session' />">List</a>
-                            <a class="collapse-item" href="#">Search</a>
+                            <a class="collapse-item" href="<c:url value='/course-session/search' />">Search</a>
                         </div>
                     </div>
                 </li>

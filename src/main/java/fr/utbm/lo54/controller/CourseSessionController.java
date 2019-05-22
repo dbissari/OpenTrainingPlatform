@@ -5,12 +5,16 @@
  */
 package fr.utbm.lo54.controller;
 
+import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
 import fr.utbm.lo54.service.ICourseService;
 import fr.utbm.lo54.service.ICourseSessionService;
 import fr.utbm.lo54.service.ILocationService;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -30,6 +34,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/course-session")
 public class CourseSessionController {
     
+    private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    
     @Autowired
     private ICourseSessionService courseSessionService;
     
@@ -41,9 +47,7 @@ public class CourseSessionController {
     
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        dateFormat.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(DATE_FORMAT, true));
     }
     
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -86,5 +90,38 @@ public class CourseSessionController {
         courseSessionService.update(courseSession);
         
         return "redirect:/course-session";
+    }
+    
+    @RequestMapping(value = "/{id}/details", method = RequestMethod.GET)
+    public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
+        CourseSession courseSession = courseSessionService.getById(id);
+        List<Client> attendees = courseSessionService.listAllAttendeesByCourseSession(courseSession);
+        Double fillingPercentage = 100 * (double)attendees.size() / (double)courseSession.getMax();
+        model
+                .addAttribute("courseSession", courseSession)
+                .addAttribute("attendees", attendees)
+                .addAttribute("fillingPercentage", fillingPercentage);
+        
+        return "course_session/details";
+    }
+    
+    @RequestMapping(value = "/search", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showSearch(ModelMap model, HttpServletRequest request) throws ParseException {
+        String courseKeyword = request.getParameter("course_keyword");
+        Date date = request.getParameter("date") == null || request.getParameter("date").equals("") ?
+                null : DATE_FORMAT.parse(request.getParameter("date"));
+        Integer locationId = request.getParameter("location_id") == null || request.getParameter("location_id").equals("") ?
+                null : Integer.valueOf(request.getParameter("location_id"));
+        
+        List<CourseSession> courseSessions = courseSessionService.listAllByCourseDateAndLocation(courseKeyword, date, locationId);
+        
+        model
+                .addAttribute("courseSessions", courseSessions)
+                .addAttribute("locations", locationService.listAll())
+                .addAttribute("courseKeyword", courseKeyword)
+                .addAttribute("date", date != null ? DATE_FORMAT.format(date) : null)
+                .addAttribute("locationId", locationId);
+        
+        return "course_session/search";
     }
 }

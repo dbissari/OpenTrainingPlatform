@@ -36,12 +36,14 @@ public class ClientDao implements IClientDao {
     }
 
     @Override
+    @Transactional
     public List<Client> findAll() {
         Query query = entityManager.createQuery("SELECT c FROM Client c", Client.class);
         return query.getResultList();
     }
 
     @Override
+    @Transactional
     public Client findById(Integer id) {
         return entityManager.find(Client.class, id);
     }

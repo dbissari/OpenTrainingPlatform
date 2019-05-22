@@ -6,7 +6,9 @@
 package fr.utbm.lo54.service;
 
 import fr.utbm.lo54.dao.ICourseSessionDao;
+import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +41,15 @@ public class CourseSessionService implements ICourseSessionService{
     @Override
     public CourseSession getById(Integer id) {
         return courseSessionDao.findById(id);
+    }
+
+    @Override
+    public List<Client> listAllAttendeesByCourseSession(CourseSession courseSession) {
+        return courseSessionDao.findAllAttendeesByCourseSession(courseSession);
+    }
+
+    @Override
+    public List<CourseSession> listAllByCourseDateAndLocation(String courseKeyword, Date date, Integer locationId) {
+        return courseSessionDao.findAllByCourseDateAndLocation(courseKeyword, date, locationId);
     }
 }

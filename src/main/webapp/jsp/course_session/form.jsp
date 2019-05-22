@@ -15,7 +15,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <!-- Page Title -->
-        <h1 class="h3 mb-0 text-gray-800">Client</h1>
+        <h1 class="h3 mb-0 text-gray-800">Course session</h1>
     </div>
 
     <!-- Clients list Card -->
@@ -57,10 +57,10 @@
                                     <c:forEach items="${locations}" var="l" varStatus="status">
                                         <c:choose>
                                             <c:when test="${l.id eq location.id}">
-                                                <form:option  selected="true" value="${l.id}"  label="${l}"/>
+                                                <form:option selected="true" value="${l.id}" label="${l}"/>
                                             </c:when>
                                             <c:otherwise>
-                                                <form:option  value="${l.id}"  label="${l}"/>
+                                                <form:option value="${l.id}" label="${l}"/>
                                             </c:otherwise>
                                         </c:choose> 
                                     </c:forEach>

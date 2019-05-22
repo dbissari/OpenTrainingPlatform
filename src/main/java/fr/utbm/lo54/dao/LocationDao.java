@@ -36,12 +36,14 @@ public class LocationDao implements ILocationDao {
     }
 
     @Override
+    @Transactional
     public List<Location> findAll() {
         Query query = entityManager.createQuery("SELECT l FROM Location l", Location.class);
         return query.getResultList();
     }
 
     @Override
+    @Transactional
     public Location findById(Integer id) {
         return entityManager.find(Location.class, id);
     }

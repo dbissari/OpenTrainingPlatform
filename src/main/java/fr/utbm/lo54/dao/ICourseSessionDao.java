@@ -5,7 +5,9 @@
  */
 package fr.utbm.lo54.dao;
 
+import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +23,10 @@ public interface ICourseSessionDao {
     public CourseSession findById(Integer id);
 
     public List<CourseSession> findAll();
+    
+    public List<Client> findAllAttendeesByCourseSession(CourseSession courseSession);
+    
+    public List<CourseSession> findAllByCourseDateAndLocation(String courseKeyword, Date date, Integer locationId);
 
     /*
     public List<CourseSession> findAllFuture();

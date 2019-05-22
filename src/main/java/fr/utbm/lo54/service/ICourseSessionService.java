@@ -5,7 +5,9 @@
  */
 package fr.utbm.lo54.service;
 
+import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,5 +23,9 @@ public interface ICourseSessionService {
     public List<CourseSession> listAll();
     
     public CourseSession getById(Integer id);
+    
+    public List<Client> listAllAttendeesByCourseSession(CourseSession courseSession);
+
+    public List<CourseSession> listAllByCourseDateAndLocation(String courseKeyword, Date date, Integer locationId);
     
 }
