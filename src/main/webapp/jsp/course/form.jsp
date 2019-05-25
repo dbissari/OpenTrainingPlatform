@@ -32,6 +32,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="code" cssClass="form-control" readonly="${!empty course.code}"/>
+                                <small class="text-danger">
+                                    <form:errors path="code" />
+                                </small>
                             </div>
                         </div>
                             
@@ -41,6 +44,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="title" cssClass="form-control" />
+                                <small class="text-danger">
+                                    <form:errors path="title" />
+                                </small>
                             </div>
                         </div>
 

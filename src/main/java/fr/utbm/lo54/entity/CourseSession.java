@@ -15,9 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -51,12 +50,7 @@ public class CourseSession implements Serializable {
     @JoinColumn(name = "location_id", nullable = false, referencedColumnName = "id")
     private Location location;
     
-    @ManyToMany
-    @JoinTable(
-            name = "Register",
-            joinColumns=@JoinColumn(name="session_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="attendee_id", referencedColumnName="id")
-    )
+    @OneToMany(mappedBy = "courseSession")
     private List<Client> attendees;
     
     public CourseSession() {
@@ -124,12 +118,8 @@ public class CourseSession implements Serializable {
         return attendees;
     }
 
-    public void addAttendee(Client attendee) {
-        attendees.add(attendee);
-    }
-
-    public void removeAttendee(Client attendee) {
-        attendees.remove(attendee);
+    public void setAttendees(List<Client> attendees) {
+        this.attendees = attendees;
     }
     
 }

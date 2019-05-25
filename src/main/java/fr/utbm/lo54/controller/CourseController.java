@@ -7,11 +7,12 @@ package fr.utbm.lo54.controller;
 
 import fr.utbm.lo54.entity.Course;
 import fr.utbm.lo54.service.ICourseService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,23 +42,12 @@ public class CourseController {
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String submitNewForm(@ModelAttribute("course") Course course) {
+    public String submitNewForm(@Valid @ModelAttribute("course") Course course, BindingResult result) {
+        if (result.hasErrors()) {
+            return "course/form";
+        }
+        
         courseService.create(course);
-        
-        return "redirect:/course";
-    }
-    
-    @RequestMapping(value = "/{code}/edit", method = RequestMethod.GET)
-    public String showEditForm(@PathVariable("code") String code, ModelMap model) {
-        Course course = courseService.getByCode(code);
-        model.addAttribute("course", course);
-        
-        return "course/form";
-    }
-    
-    @RequestMapping(value = "/{code}/edit", method = RequestMethod.POST)
-    public String submitEditForm(@PathVariable("code") String code, @ModelAttribute("course") Course course) {
-        courseService.update(course);
         
         return "redirect:/course";
     }

@@ -13,7 +13,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate.version>4.3.1.Final</hibernate.version>
+        <hibernate.validator.version>6.0.2.Final</hibernate.validator.version>
         <spring.version>5.1.7.RELEASE</spring.version>
+        <spring.security.version>5.1.5.RELEASE</spring.security.version>
+        <jackson.version>2.9.9</jackson.version>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     </properties>
     
@@ -91,19 +94,30 @@
             <version>1.1.2</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <!-- FasterXML Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.9.9</version>
+            <version>${jackson.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.9</version>
+            <version>${jackson.version}</version>
         </dependency>
-
+        
+        <!-- Hibernate validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        
     </dependencies>
     
     <build>

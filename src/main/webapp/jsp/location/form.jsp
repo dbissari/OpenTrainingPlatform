@@ -33,6 +33,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="city" cssClass="form-control" />
+                                <small class="text-danger">
+                                    <form:errors path="city" />
+                                </small>
                             </div>
                         </div>
 

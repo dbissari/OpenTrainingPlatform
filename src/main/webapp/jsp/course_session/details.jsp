@@ -5,7 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="/jsp/fragment/layout_head.jsp" />
 
@@ -22,7 +22,7 @@
     <div class="row">
 
         <!-- Infos Card -->
-        <div class="col-xl-5 col-lg-6">
+        <div class="col-lg-5">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Infos</h6>
@@ -32,28 +32,28 @@
                         <div class="col">
 
                             <div class="form-group row">
-                                <div class="col-sm-3">Course</div>
-                                <div class="col-sm-9">${courseSession.course}</div>
+                                <div class="col-sm-4">Course</div>
+                                <div class="col-sm-8">${courseSession.course}</div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-3">Location</div>
-                                <div class="col-sm-9">${courseSession.location}</div>
+                                <div class="col-sm-4">Location</div>
+                                <div class="col-sm-8">${courseSession.location}</div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-3">Start date</div>
-                                <div class="col-sm-9"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.startDate}" /></div>
+                                <div class="col-sm-4">Start date</div>
+                                <div class="col-sm-8"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.startDate}" /></div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-3">End date</div>
-                                <div class="col-sm-9"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.endDate}" /></div>
+                                <div class="col-sm-4">End date</div>
+                                <div class="col-sm-8"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.endDate}" /></div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-3">Max places</div>
-                                <div class="col-sm-9">${courseSession.max}</div>
+                                <div class="col-sm-4">Max places</div>
+                                <div class="col-sm-8">${courseSession.max}</div>
                             </div>
 
                             <div class="form-group row">
@@ -72,7 +72,7 @@
         </div>
 
         <!-- Attendees list card -->
-        <div class="col-xl-7 col-lg-6">
+        <div class="col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Attendees</h6>
@@ -80,16 +80,24 @@
                 <div class="card-body">
                     <c:if test="${!empty attendees}">
                         <div class="table-responsive">
-                            <table class="table table-hover" width="100%" cellspacing="0">
+                            <table class="table table-hover" id="attendeesDataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <c:forEach items="${attendees}" var="attendee">
                                         <tr>
-                                            <td>${attendee}</td>
-                                            <td>
-                                                <a href="#" class="btn btn-sm btn-info">
-                                                    <i class="fas fa-eye fa-sm text-white-50"></i> Show
-                                                </a>
-                                            </td>
+                                            <td>${attendee.firstName}</td>
+                                            <td>${attendee.lastName}</td>
+                                            <td>${attendee.address}</td>
+                                            <td>${attendee.phone}</td>
+                                            <td>${attendee.email}</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

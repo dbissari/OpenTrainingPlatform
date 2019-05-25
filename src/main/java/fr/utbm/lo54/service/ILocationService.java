@@ -16,8 +16,6 @@ public interface ILocationService {
     
     public void create(Location location);
     
-    public void update(Location location);
-    
     public List<Location> listAll();
     
     public Location getById(Integer id);
