@@ -27,11 +27,6 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public void update(Course course) {
-        courseDao.update(course);
-    }
-
-    @Override
     public List<Course> listAll() {
         return courseDao.findAll();
     }

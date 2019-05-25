@@ -28,21 +28,10 @@
     
     <!-- Detect @Transactional Annotation -->
     <tx:annotation-driven transaction-manager="transactionManager" />
-    
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-    
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="otpPU" />
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-        </property>
-    </bean>
 
     <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name = "prefix" value = "/jsp/" />
         <property name = "suffix" value = ".jsp" />
     </bean>
-
+    
 </beans>

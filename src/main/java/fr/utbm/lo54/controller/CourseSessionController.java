@@ -74,24 +74,6 @@ public class CourseSessionController {
         return "redirect:/course-session";
     }
     
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-    public String showEditForm(@PathVariable("id") Integer id, ModelMap model) {
-        CourseSession courseSession = courseSessionService.getById(id);
-        model
-                .addAttribute("courseSession", courseSession)
-                .addAttribute("courses", courseService.listAll())
-                .addAttribute("locations", locationService.listAll());
-        
-        return "course_session/form";
-    }
-    
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public String submitEditForm(@PathVariable("id") Integer id, @ModelAttribute("courseSession") CourseSession courseSession) {
-        courseSessionService.update(courseSession);
-        
-        return "redirect:/course-session";
-    }
-    
     @RequestMapping(value = "/{id}/details", method = RequestMethod.GET)
     public String showDetails(@PathVariable("id") Integer id, ModelMap model) {
         CourseSession courseSession = courseSessionService.getById(id);
@@ -103,6 +85,24 @@ public class CourseSessionController {
                 .addAttribute("fillingPercentage", fillingPercentage);
         
         return "course_session/details";
+    }
+    
+    @RequestMapping(value = "/{id}/register", method = RequestMethod.GET)
+    public String showRegisterForm(@PathVariable("id") Integer id, ModelMap model) {
+        CourseSession courseSession = courseSessionService.getById(id);
+        model
+                .addAttribute("courseSession", courseSession)
+                .addAttribute("client", new Client());
+        
+        return "course_session/register";
+    }
+    
+    @RequestMapping(value = "/{id}/register", method = RequestMethod.POST)
+    public String submitRegisterForm(@PathVariable("id") Integer id, @ModelAttribute("client") Client client) {
+        CourseSession courseSession = courseSessionService.getById(id);
+        courseSessionService.register(courseSession, client);
+        
+        return "redirect:/course-session/" + id + "/details";
     }
     
     @RequestMapping(value = "/search", method = {RequestMethod.GET, RequestMethod.POST})

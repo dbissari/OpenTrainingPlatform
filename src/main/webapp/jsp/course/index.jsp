@@ -29,7 +29,6 @@
                             <tr>
                                 <th>Code</th>
                                 <th>Title</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,14 +36,6 @@
                             <tr>
                                 <td>${course.code}</td>
                                 <td>${course.title}</td>
-                                <td>
-                                    <a href="<c:url value="/course/${course.code}/edit" />" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-pen fa-sm text-white-50"></i> Edit
-                                    </a>
-                                    <!--<a href="#" class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash fa-sm text-white-50"></i> Delete
-                                    </a>-->
-                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

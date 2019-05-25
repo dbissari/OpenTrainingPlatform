@@ -16,8 +16,6 @@ public interface ICourseService {
     
     public void create(Course course);
     
-    public void update(Course course);
-    
     public List<Course> listAll();
     
     public Course getByCode(String code);

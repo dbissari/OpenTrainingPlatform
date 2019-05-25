@@ -27,11 +27,6 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public void update(Location location) {
-        locationDao.update(location);
-    }
-
-    @Override
     public List<Location> listAll() {
         return locationDao.findAll();
     }

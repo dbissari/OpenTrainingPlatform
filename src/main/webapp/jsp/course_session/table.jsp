@@ -23,14 +23,14 @@
             <tbody>
             <c:forEach items="${courseSessions}" var="courseSession">
                 <tr>
-                    <td>${courseSession.course}</td>
+                    <td>${courseSession.course.title}</td>
                     <td><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.startDate}" /></td>
                 <td><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.endDate}" /></td>
                 <td>${courseSession.location}</td>
                 <td>${courseSession.max}</td>
                 <td>
-                    <a href="<c:url value='/course-session/${courseSession.id}/edit' />" class="btn btn-sm btn-primary">
-                        <i class="fas fa-pen fa-sm text-white-50"></i> Edit
+                    <a href="<c:url value='/course-session/${courseSession.id}/register' />" class="btn btn-sm btn-primary">
+                        <i class="fas fa-pen fa-sm text-white-50"></i> Register
                     </a>
                     <a href="<c:url value='/course-session/${courseSession.id}/details' />" class="btn btn-sm btn-info">
                         <i class="fas fa-eye fa-sm text-white-50"></i> Show

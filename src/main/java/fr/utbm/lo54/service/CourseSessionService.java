@@ -5,6 +5,7 @@
  */
 package fr.utbm.lo54.service;
 
+import fr.utbm.lo54.dao.IClientDao;
 import fr.utbm.lo54.dao.ICourseSessionDao;
 import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
@@ -22,15 +23,13 @@ public class CourseSessionService implements ICourseSessionService{
     
     @Autowired
     private ICourseSessionDao courseSessionDao;
+    
+    @Autowired
+    private IClientDao clientDao;
 
     @Override
     public void create(CourseSession courseSession) {
         courseSessionDao.persist(courseSession);
-    }
-
-    @Override
-    public void update(CourseSession courseSession) {
-        courseSessionDao.update(courseSession);
     }
 
     @Override
@@ -51,5 +50,11 @@ public class CourseSessionService implements ICourseSessionService{
     @Override
     public List<CourseSession> listAllByCourseDateAndLocation(String courseKeyword, Date date, Integer locationId) {
         return courseSessionDao.findAllByCourseDateAndLocation(courseKeyword, date, locationId);
+    }
+
+    @Override
+    public void register(CourseSession courseSession, Client client) {
+        client.setCourseSession(courseSession);
+        clientDao.persist(client);
     }
 }

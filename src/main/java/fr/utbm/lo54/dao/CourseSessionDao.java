@@ -53,7 +53,7 @@ public class CourseSessionDao implements ICourseSessionDao {
     @Override
     @Transactional
     public List<Client> findAllAttendeesByCourseSession(CourseSession courseSession) {
-        Query query = entityManager.createQuery("SELECT c FROM Client c JOIN c.sessions cs WHERE cs = :courseSession", Client.class);
+        Query query = entityManager.createQuery("SELECT c FROM Client c WHERE c.courseSession = :courseSession", Client.class);
         query.setParameter("courseSession", courseSession);
         return query.getResultList();
     }

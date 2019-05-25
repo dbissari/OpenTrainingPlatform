@@ -109,28 +109,6 @@
                 </li>
 
                 <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Clients
-                </div>
-
-                <!-- Nav Item - Collapse - Clients -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" id="headingClients" data-toggle="collapse" data-target="#collapseClients" aria-expanded="true" aria-controls="collapseClients">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Clients</span>
-                    </a>
-                    <div id="collapseClients" class="collapse" aria-labelledby="headingClients" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="<c:url value='/client/new' />">New</a>
-                            <a class="collapse-item" href="<c:url value='/client' />">List</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
                 <!-- Sidebar Toggler (Sidebar) -->

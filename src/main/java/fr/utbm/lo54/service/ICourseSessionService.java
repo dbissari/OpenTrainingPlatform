@@ -18,7 +18,7 @@ public interface ICourseSessionService {
     
     public void create(CourseSession courseSession);
     
-    public void update(CourseSession courseSession);
+    public void register(CourseSession courseSession, Client client);
     
     public List<CourseSession> listAll();
     
