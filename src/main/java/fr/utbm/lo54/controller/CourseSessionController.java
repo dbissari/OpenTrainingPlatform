@@ -15,10 +15,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -68,7 +70,11 @@ public class CourseSessionController {
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String submitNewForm(@ModelAttribute("courseSession") CourseSession courseSession) {
+    public String submitNewForm(@Valid @ModelAttribute("courseSession") CourseSession courseSession, BindingResult result) {
+        if (result.hasErrors()) {
+            return "course_session/form";
+        }
+        
         courseSessionService.create(courseSession);
         
         return "redirect:/course-session";
@@ -98,7 +104,11 @@ public class CourseSessionController {
     }
     
     @RequestMapping(value = "/{id}/register", method = RequestMethod.POST)
-    public String submitRegisterForm(@PathVariable("id") Integer id, @ModelAttribute("client") Client client) {
+    public String submitRegisterForm(@PathVariable("id") Integer id, @Valid @ModelAttribute("client") Client client, BindingResult result) {
+        if (result.hasErrors()) {
+            return "course_session/register";
+        }
+        
         CourseSession courseSession = courseSessionService.getById(id);
         courseSessionService.register(courseSession, client);
         

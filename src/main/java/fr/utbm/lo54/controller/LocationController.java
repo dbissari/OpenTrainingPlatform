@@ -7,9 +7,11 @@ package fr.utbm.lo54.controller;
 
 import fr.utbm.lo54.entity.Location;
 import fr.utbm.lo54.service.ILocationService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,7 +42,11 @@ public class LocationController {
     }
     
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String submitNewForm(@ModelAttribute("location") Location location) {
+    public String submitNewForm(@Valid @ModelAttribute("location") Location location, BindingResult result) {
+        if (result.hasErrors()) {
+            return "location/form";
+        }
+        
         locationService.create(location);
         
         return "redirect:/location";

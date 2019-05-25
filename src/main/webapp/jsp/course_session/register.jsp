@@ -92,6 +92,9 @@
                                     </form:label>
                                     <div class="col-sm-9">
                                         <form:input path="firstName" cssClass="form-control" />
+                                        <small class="text-danger">
+                                            <form:errors path="firstName" />
+                                        </small>
                                     </div>
                                 </div>
 
@@ -101,6 +104,9 @@
                                     </form:label>
                                     <div class="col-sm-9">
                                         <form:input path="lastName" cssClass="form-control" />
+                                        <small class="text-danger">
+                                            <form:errors path="lastName" />
+                                        </small>
                                     </div>
                                 </div>
 
@@ -110,6 +116,9 @@
                                     </form:label>
                                     <div class="col-sm-9">
                                         <form:input path="address" cssClass="form-control" />
+                                        <small class="text-danger">
+                                            <form:errors path="address" />
+                                        </small>
                                     </div>
                                 </div>
 
@@ -119,6 +128,9 @@
                                     </form:label>
                                     <div class="col-sm-9">
                                         <form:input path="phone" cssClass="form-control" />
+                                        <small class="text-danger">
+                                            <form:errors path="phone" />
+                                        </small>
                                     </div>
                                 </div>
 
@@ -128,6 +140,9 @@
                                     </form:label>
                                     <div class="col-sm-9">
                                         <form:input path="email" cssClass="form-control" />
+                                        <small class="text-danger">
+                                            <form:errors path="email" />
+                                        </small>
                                     </div>
                                 </div>
 

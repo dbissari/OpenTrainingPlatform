@@ -45,6 +45,9 @@
                                         </c:choose> 
                                     </c:forEach>
                                 </form:select>
+                                <small class="text-danger">
+                                    <form:errors path="course.code" />
+                                </small>
                             </div>
                         </div>
 
@@ -65,6 +68,9 @@
                                         </c:choose> 
                                     </c:forEach>
                                 </form:select>
+                                <small class="text-danger">
+                                    <form:errors path="location.id" />
+                                </small>
                             </div>
                         </div>
 
@@ -74,6 +80,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="startDate" cssClass="form-control" type="date" />
+                                <small class="text-danger">
+                                    <form:errors path="startDate" />
+                                </small>
                             </div>
                         </div>
 
@@ -83,6 +92,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="endDate" cssClass="form-control" type="date" />
+                                <small class="text-danger">
+                                    <form:errors path="endDate" />
+                                </small>
                             </div>
                         </div>
 
@@ -92,6 +104,9 @@
                             </form:label>
                             <div class="col-sm-9">
                                 <form:input path="max" cssClass="form-control" />
+                                <small class="text-danger">
+                                    <form:errors path="max" />
+                                </small>
                             </div>
                         </div>
 
