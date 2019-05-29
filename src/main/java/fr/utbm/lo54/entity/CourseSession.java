@@ -5,6 +5,9 @@
  */
 package fr.utbm.lo54.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import fr.utbm.lo54.util.CustomListSerializer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,10 +36,12 @@ public class CourseSession implements Serializable {
     
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date startDate;
     
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private Date endDate;
     
     @Column(nullable = false)
@@ -51,6 +56,7 @@ public class CourseSession implements Serializable {
     private Location location;
     
     @OneToMany(mappedBy = "courseSession")
+    @JsonSerialize(using = CustomListSerializer.class)
     private List<Client> attendees;
     
     public CourseSession() {
