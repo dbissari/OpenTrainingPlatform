@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -41,13 +42,19 @@ public class CourseSessionDao implements ICourseSessionDao {
     @Transactional
     public List<CourseSession> findAll() {
         Query query = entityManager.createQuery("SELECT cs FROM CourseSession cs", CourseSession.class);
-        return query.getResultList();
+        List<CourseSession> list = query.getResultList();
+        list.forEach((c) -> {
+            Hibernate.initialize(c.getAttendees());
+        });
+        return list;
     }
 
     @Override
     @Transactional
     public CourseSession findById(Integer id) {
-        return entityManager.find(CourseSession.class, id);
+        CourseSession courseSession = entityManager.find(CourseSession.class, id);
+        Hibernate.initialize(courseSession.getAttendees());
+        return courseSession;
     }
 
     @Override
