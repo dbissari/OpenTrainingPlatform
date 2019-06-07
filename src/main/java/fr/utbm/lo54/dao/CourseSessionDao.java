@@ -9,6 +9,7 @@ import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -43,9 +44,8 @@ public class CourseSessionDao implements ICourseSessionDao {
     public List<CourseSession> findAll() {
         Query query = entityManager.createQuery("SELECT cs FROM CourseSession cs", CourseSession.class);
         List<CourseSession> list = query.getResultList();
-        list.forEach((c) -> {
-            Hibernate.initialize(c.getAttendees());
-        });
+        list.stream().forEach(cs -> Hibernate.initialize(cs.getAttendees()));
+        
         return list;
     }
 
@@ -54,6 +54,7 @@ public class CourseSessionDao implements ICourseSessionDao {
     public CourseSession findById(Integer id) {
         CourseSession courseSession = entityManager.find(CourseSession.class, id);
         Hibernate.initialize(courseSession.getAttendees());
+        
         return courseSession;
     }
 
@@ -62,6 +63,7 @@ public class CourseSessionDao implements ICourseSessionDao {
     public List<Client> findAllAttendeesByCourseSession(CourseSession courseSession) {
         Query query = entityManager.createQuery("SELECT c FROM Client c WHERE c.courseSession = :courseSession", Client.class);
         query.setParameter("courseSession", courseSession);
+        
         return query.getResultList();
     }
 
@@ -84,7 +86,10 @@ public class CourseSessionDao implements ICourseSessionDao {
         if(locationId != null)
             query.setParameter("locationId", locationId);
         
-        return query.getResultList();
+        List<CourseSession> list = query.getResultList();
+        list.stream().forEach(cs -> Hibernate.initialize(cs.getAttendees()));
+        
+        return list;
     }
     
 }

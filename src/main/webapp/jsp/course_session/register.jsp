@@ -24,52 +24,7 @@
 
         <!-- Infos Card -->
         <div class="col-xl-5 col-lg-6">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Infos</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row justify-content-center mt-3">
-                        <div class="col">
-
-                            <div class="form-group row">
-                                <div class="col-sm-3">Course</div>
-                                <div class="col-sm-9">${courseSession.course}</div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-3">Location</div>
-                                <div class="col-sm-9">${courseSession.location}</div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-3">Start date</div>
-                                <div class="col-sm-9"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.startDate}" /></div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-3">End date</div>
-                                <div class="col-sm-9"><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.endDate}" /></div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-3">Max places</div>
-                                <div class="col-sm-9">${courseSession.max}</div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col">
-                                    <div>Filling percentage <span class="float-right">${fillingPercentage}%</span></div>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: ${fillingPercentage}%" aria-valuenow="${fillingPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="infos.jsp" />
         </div>
 
         <!-- Attendees list card -->

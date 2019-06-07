@@ -34,6 +34,10 @@ public class CourseSessionDto implements Serializable {
     
     private List<Client> attendees;
     
+    public void computeFillingPercentage() {
+        this.fillingPercentage = 100 * (double) this.attendees.size() / (double) this.max;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -66,6 +70,14 @@ public class CourseSessionDto implements Serializable {
         this.max = max;
     }
 
+    public Double getFillingPercentage() {
+        return fillingPercentage;
+    }
+
+    public void setFillingPercentage(Double fillingPercentage) {
+        this.fillingPercentage = fillingPercentage;
+    }
+
     public Course getCourse() {
         return course;
     }
@@ -88,9 +100,5 @@ public class CourseSessionDto implements Serializable {
     
     public void setAttendees(List<Client> attendees) {
         this.attendees = attendees;
-    }
-    
-    public void computeFillingPercentage() {
-        this.fillingPercentage = 100 * (double) this.attendees.size() / (double) this.max;
     }
 }

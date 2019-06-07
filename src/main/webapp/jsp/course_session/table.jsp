@@ -17,6 +17,7 @@
                     <th>End</th>
                     <th>Location</th>
                     <th>Max places</th>
+                    <th>Filling percentage</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                 <td><fmt:formatDate type="date" dateStyle="short" value = "${courseSession.endDate}" /></td>
                 <td>${courseSession.location}</td>
                 <td>${courseSession.max}</td>
+                <td>${courseSession.fillingPercentage}%</td>
                 <td>
                     <a href="<c:url value='/course-session/${courseSession.id}/register' />" class="btn btn-sm btn-primary">
                         <i class="fas fa-pen fa-sm text-white-50"></i> Register
