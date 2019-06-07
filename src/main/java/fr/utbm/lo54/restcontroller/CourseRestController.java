@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author edemos
  */
 @RestController
-@RequestMapping("/api/course")
+@RequestMapping("/api/course-session")
 public class CourseRestController {
     
     @Autowired
