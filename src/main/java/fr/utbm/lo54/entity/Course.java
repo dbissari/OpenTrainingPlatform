@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -19,9 +20,11 @@ public class Course implements Serializable {
     
     @Id
     @Column(nullable = false, unique = true)
+    @NotBlank
     private String code;
     
     @Column(nullable = false, unique = true)
+    @NotBlank
     private String title;
     
     public Course() {

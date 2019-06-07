@@ -139,7 +139,7 @@
                                         Email
                                     </form:label>
                                     <div class="col-sm-9">
-                                        <form:input path="email" cssClass="form-control" />
+                                        <form:input path="email" cssClass="form-control" type="email" />
                                         <small class="text-danger">
                                             <form:errors path="email" />
                                         </small>

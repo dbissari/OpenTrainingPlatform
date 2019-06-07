@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -26,18 +27,23 @@ public class Client implements Serializable {
     private Integer id;
     
     @Column(nullable = false)
+    @NotBlank
     private String firstName;
     
     @Column(nullable = false)
+    @NotBlank
     private String lastName;
     
     @Column(nullable = false)
+    @NotBlank
     private String address;
     
     @Column(nullable = false)
+    @NotBlank
     private String phone;
     
     @Column(nullable = false)
+    @NotBlank
     private String email;
     
     @ManyToOne

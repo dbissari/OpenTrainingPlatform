@@ -103,7 +103,7 @@
                                 Max places
                             </form:label>
                             <div class="col-sm-9">
-                                <form:input path="max" cssClass="form-control" />
+                                <form:input path="max" cssClass="form-control" type="number" />
                                 <small class="text-danger">
                                     <form:errors path="max" />
                                 </small>

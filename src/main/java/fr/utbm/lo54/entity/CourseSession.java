@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -33,21 +35,27 @@ public class CourseSession implements Serializable {
     
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @NotNull
     private Date startDate;
     
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @NotNull
     private Date endDate;
     
     @Column(nullable = false)
+    @NotNull
+    @Min(10)
     private Integer max;
     
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false, referencedColumnName = "code")
+    @NotNull
     private Course course;
     
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false, referencedColumnName = "id")
+    @NotNull
     private Location location;
     
     @OneToMany(mappedBy = "courseSession")
