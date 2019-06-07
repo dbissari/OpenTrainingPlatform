@@ -35,4 +35,5 @@ public interface ICourseSessionService {
     
     public List<CourseSessionDto> listAllByCourseDateAndLocationAsDto(String courseKeyword, Date date, Integer locationId);
     
+    public CourseSessionDto convertToDto(CourseSession courseSession);
 }

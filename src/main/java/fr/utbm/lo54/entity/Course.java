@@ -5,6 +5,8 @@
  */
 package fr.utbm.lo54.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import fr.utbm.lo54.util.SerializerViews;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,10 +23,12 @@ public class Course implements Serializable {
     @Id
     @Column(nullable = false, unique = true)
     @NotBlank
+    @JsonView(SerializerViews.CourseSessionDetails.class)
     private String code;
     
     @Column(nullable = false, unique = true)
     @NotBlank
+    @JsonView(SerializerViews.CourseSession.class)
     private String title;
     
     public Course() {

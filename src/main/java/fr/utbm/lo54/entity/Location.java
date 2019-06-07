@@ -5,6 +5,8 @@
  */
 package fr.utbm.lo54.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import fr.utbm.lo54.util.SerializerViews;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,10 +24,12 @@ public class Location implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(SerializerViews.CourseSessionDetails.class)
     private Integer id;
     
     @Column(nullable = false, unique = true)
     @NotBlank
+    @JsonView(SerializerViews.CourseSession.class)
     private String city;
     
     public Location() {

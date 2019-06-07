@@ -6,8 +6,10 @@
 package fr.utbm.lo54.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fr.utbm.lo54.util.CustomListSerializer;
+import fr.utbm.lo54.util.SerializerViews;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +36,7 @@ public class CourseSession implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(SerializerViews.CourseSessionClient.class)
     private Integer id;
     
     @Column(nullable = false)

@@ -24,7 +24,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
 
-                    <form class="row" method="POST">
+                    <form class="row" method="GET">
 
                         <div class="col-sm-6 col-lg-3 my-2">
                             <h4 class="small font-weight-bold">Course</h4>

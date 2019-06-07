@@ -107,7 +107,7 @@ public class CourseSessionController {
         return "redirect:/course-session/" + id + "/details";
     }
 
-    @RequestMapping(value = "/search", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String showSearch(ModelMap model, HttpServletRequest request) throws ParseException {
         String courseKeyword = request.getParameter("course_keyword");
         Date date = request.getParameter("date") == null || request.getParameter("date").equals("")

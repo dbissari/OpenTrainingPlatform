@@ -5,9 +5,12 @@
  */
 package fr.utbm.lo54.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
 import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.Course;
 import fr.utbm.lo54.entity.Location;
+import fr.utbm.lo54.util.SerializerViews;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -18,20 +21,30 @@ import java.util.List;
  */
 public class CourseSessionDto implements Serializable {
     
+    @JsonView(SerializerViews.CourseSession.class)
     private Integer id;
     
+    @JsonView(SerializerViews.CourseSession.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date startDate;
     
+    @JsonView(SerializerViews.CourseSession.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
     
+    @JsonView(SerializerViews.CourseSession.class)
     private Integer max;
     
+    @JsonView(SerializerViews.CourseSession.class)
     private Double fillingPercentage;
     
+    @JsonView(SerializerViews.CourseSession.class)
     private Course course;
     
+    @JsonView(SerializerViews.CourseSession.class)
     private Location location;
     
+    @JsonView(SerializerViews.CourseSessionDetails.class)
     private List<Client> attendees;
     
     public void computeFillingPercentage() {
@@ -100,5 +113,10 @@ public class CourseSessionDto implements Serializable {
     
     public void setAttendees(List<Client> attendees) {
         this.attendees = attendees;
+    }
+    
+    @JsonView(SerializerViews.CourseSessionList.class)
+    public Integer getAttendeesCount() {
+        return this.attendees.size();
     }
 }

@@ -83,7 +83,8 @@ public class CourseSessionService implements ICourseSessionService {
                 .collect(Collectors.toList());
     }
 
-    private CourseSessionDto convertToDto(CourseSession courseSession) {
+    @Override
+    public CourseSessionDto convertToDto(CourseSession courseSession) {
         CourseSessionDto courseSessionDto = modelMapper.map(courseSession, CourseSessionDto.class);
         courseSessionDto.computeFillingPercentage();
         return courseSessionDto;
