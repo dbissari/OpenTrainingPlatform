@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author edemos
  */
 @RestController
-@RequestMapping("/api/session")
+@RequestMapping("/api/course-session")
 public class CourseSessionRestController {
 
     private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");

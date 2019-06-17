@@ -21,17 +21,16 @@
     <context:annotation-config />
     <!-- Scan for all of Spring components such as Spring Service -->
     <context:component-scan base-package = "fr.utbm.lo54" />
-    
+    <!-- For assets including -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    
-    <mvc:annotation-driven />
-    
+    <!-- Detect Spring MVC Annotations -->
+    <mvc:annotation-driven />  
     <!-- Detect @Transactional Annotation -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name = "prefix" value = "/jsp/" />
-        <property name = "suffix" value = ".jsp" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp/" />
+        <property name="suffix" value=".jsp" />
     </bean>
     
 </beans>

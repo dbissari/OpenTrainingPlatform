@@ -69,8 +69,12 @@ public class CourseSessionController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String submitNewForm(@Valid @ModelAttribute("courseSession") CourseSession courseSession, BindingResult result) {
+    public String submitNewForm(@Valid @ModelAttribute("courseSession") CourseSession courseSession, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
+            model
+                    .addAttribute("courses", courseService.listAll())
+                    .addAttribute("locations", locationService.listAll());
+            
             return "course_session/form";
         }
 
@@ -96,8 +100,9 @@ public class CourseSessionController {
     }
 
     @RequestMapping(value = "/{id}/register", method = RequestMethod.POST)
-    public String submitRegisterForm(@PathVariable("id") Integer id, @Valid @ModelAttribute("client") Client client, BindingResult result) {
+    public String submitRegisterForm(@PathVariable("id") Integer id, @Valid @ModelAttribute("client") Client client, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
+            model.addAttribute("courseSession", courseSessionService.getByIdAsDto(id));
             return "course_session/register";
         }
 

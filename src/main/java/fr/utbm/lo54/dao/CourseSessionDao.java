@@ -9,7 +9,6 @@ import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.CourseSession;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;

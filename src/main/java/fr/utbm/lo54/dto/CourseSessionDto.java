@@ -7,6 +7,8 @@ package fr.utbm.lo54.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import fr.utbm.lo54.entity.Client;
 import fr.utbm.lo54.entity.Course;
 import fr.utbm.lo54.entity.Location;
@@ -45,6 +47,8 @@ public class CourseSessionDto implements Serializable {
     private Location location;
     
     @JsonView(SerializerViews.CourseSessionDetails.class)
+    @JacksonXmlElementWrapper(localName = "attendees")
+    @JacksonXmlProperty(localName = "attendee")
     private List<Client> attendees;
     
     public void computeFillingPercentage() {

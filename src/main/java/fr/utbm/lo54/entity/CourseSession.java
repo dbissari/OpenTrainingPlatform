@@ -21,6 +21,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -39,11 +41,13 @@ public class CourseSession implements Serializable {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @NotNull
+    @Future
     private Date startDate;
     
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @NotNull
+    @Future
     private Date endDate;
     
     @Column(nullable = false)
